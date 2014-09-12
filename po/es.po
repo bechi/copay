@@ -738,3 +738,14 @@ msgstr "Faltan {{tx.missingSignatures}} firmas"
 #~ msgstr ""
 #~ "Nombre del\n"
 #~ "                monedero"
+
+#: views/create.html
+msgid "Passwords must match"
+msgstr "Las contraseñas deben coincidir"
+
+#: views/join.html
+msgid "Passwords must match"
+msgstr "Las contraseñas deben coincidir"
+
+
+
