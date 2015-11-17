@@ -422,6 +422,17 @@ angular
           },
         }
       })
+      .state('backupWords', {
+        url: '/backupWords',
+        templateUrl: 'views/backupWords.html',
+        walletShouldBeComplete: true,
+        needProfile: true,
+        views: {
+          'main': {
+            templateUrl: 'views/backupWords.html'
+          },
+        }
+      })
       .state('preferencesGlobal', {
         url: '/preferencesGlobal',
         needProfile: true,
@@ -525,7 +536,7 @@ angular
 
         $state.transitionTo('copayers');
         event.preventDefault();
-      } 
+      }
 
       if (!animationService.transitionAnimated(fromState, toState)) {
         event.preventDefault();
