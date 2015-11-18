@@ -444,6 +444,17 @@ angular
           },
         }
       })
+      .state('backupConfirm', {
+        url: '/backupConfirm',
+        templateUrl: 'views/backupConfirm.html',
+        walletShouldBeComplete: true,
+        needProfile: true,
+        views: {
+          'main': {
+            templateUrl: 'views/backupConfirm.html'
+          },
+        }
+      })
       .state('preferencesGlobal', {
         url: '/preferencesGlobal',
         needProfile: true,
