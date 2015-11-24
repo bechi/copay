@@ -1,4 +1,4 @@
-<div class="" ng-controller="backupController as wordsC">
+<div class="backup" ng-controller="backupController as wordsC">
   <nav class="tab-bar">
     <section class="left-small" ng-show="!wordsC.step1 && !wordsC.step4">
       <a ng-click="wordsC.goToStep();">
@@ -11,12 +11,14 @@
 
     <section class="right-small">
       <a class="p10" ng-click="$root.go(index.prevState);">
-        <span class="text-close">X</span>
+        <span class="text-close">
+          <i class="fi-x size-24"></i>
+        </span>
       </a>
     </section>
   </nav>
 
-  <div class="content preferences backup">
+  <div class="content preferences">
     <div class="box-notification" ng-show="wordsC.error">
       <span class="text-warning" translate>
         {{wordsC.error}}
@@ -30,7 +32,7 @@
     <div ng-show="wordsC.step1">
       <div ng-show="wordsC.mnemonicWords || (wordsC.credentialsEncrypted && !wordsC.deleted)">
         <h5 class="text-center">Write your wallet seed</h5>
-        <div class="p20 size-14 text-gray" ng-show="(index.n>1 && index.m != index.n )">
+        <div class="size-14 text-gray" ng-show="(index.n>1 && index.m != index.n )">
           <span translate>
             To restore this {{index.m}}-{{index.n}} <b>shared</b> wallet you will need
           </span>:
@@ -41,7 +43,7 @@
           </ol>
           </span>
         </div>
-        <div class="p20 size-14 text-gray" ng-show="(index.n>1 && index.m == index.n )">
+        <div class="size-14 text-gray" ng-show="(index.n>1 && index.m == index.n )">
           <span translate>
             To restore this {{index.m}}-{{index.n}} <b>shared</b> wallet you will need
           </span>:
@@ -60,12 +62,9 @@
       </div>
 
       <div ng-show="wordsC.mnemonicWords || (wordsC.credentialsEncrypted && !wordsC.deleted)">
-        <p class="p20 text-gray"  ng-show="index.n==1 && wordsC.step1">
+        <p class="text-center columns text-gray"  ng-show="index.n==1 && wordsC.step1">
           <span translate>
-            You need the wallet seed to restore this personal wallet.
-          </span>
-          <span translate class="text-bold">
-            Write it down and keep them somewhere safe.
+            You need the wallet seed to restore this personal wallet. Write it down and keep them somewhere safe.
           </span>
         </p>
         <div class="row" ng-show="wordsC.credentialsEncrypted">
@@ -96,10 +95,10 @@
         </div>
       </div>
 
-      <div class="columns text-center">
+      <div class="button-box">
         <button
           ng-disabled="wordsC.credentialsEncrypted"
-          class="round expand"
+          class="round expand m0"
           ng-style="{'background-color':index.backgroundColor}"
           ng-click="wordsC.goToStep2();"
           translate>Continue
@@ -114,7 +113,7 @@
     <div ng-show="wordsC.step2">
       <div class="columns text-center">
         <h5>Confirm your wallet seed</h5>
-        <p class="p20v text-gray m0">
+        <p class="text-gray m0">
           Please tap the words in order to confirm your backup phrase is correctly written.
         </p>
         <div class="panel words text-left" ng-class="{'enable_text_select': index.network == 'testnet'}">
@@ -127,10 +126,10 @@
         </div>
       </div>
 
-      <div class="columns text-center">
+      <div class="button-box">
         <button
           ng-disabled="!wordsC.selectComplete"
-          class="round expand"
+          class="round expand m0"
           ng-style="{'background-color':index.backgroundColor}"
           ng-click="wordsC.goToStep3();"
           translate>Continue
@@ -150,11 +149,11 @@
         </div>
       </div>
 
-      <div class="columns text-center m20t">
+      <div class="button-box">
         <button
           ng-disabled="!passphrase"
           ng-style="{'background-color':index.backgroundColor}"
-          class="button round expand"
+          class="button round expand m0"
           ng-click="wordsC.goToStep4();"
           translate>Continue
         </button>
@@ -177,7 +176,7 @@
           <i class="fi-like size-48"></i>
         </div>
         <h5>Congratulation</h5>
-        <p class="text-gray p20" translate>
+        <p class="text-gray columns" translate>
           You backed up your new wallet. You can now restore this wallet at any time
         </p>
 
@@ -195,29 +194,28 @@
           <i class="fi-dislike size-48"></i>
         </div>
         <h5>Backup failed</h5>
-        <p class="text-gray p20" translate>
+        <p class="text-gray columns" translate>
           Failed to verify backup. Please check your information
         </p>
 
-        <div class="columns text-center m20t">
+        <div class="button-box">
           <button
             ng-style="{'background-color':index.backgroundColor}"
-            class="button round expand"
+            class="button round expand m0"
             ng-click="$root.go(index.prevState);"
             translate>Try again
           </button>
         </div>
       </div>
-    </div>
-
-    <!-- hide this in multisig just to show less text -->
-    <div class="row m20t"  ng-show="index.n==1">
-      <div class="columns size-12 text-gray">
-        <div class="p10t"  style="border-top:1px solid #ccc">
-          <span translate>You can safely install your wallet on another device and use it from multiple devices at the same time.</span>
-          <a href="#" ng-click="$root.openExternalLink('https://github.com/bitpay/copay/blob/master/README.md#copay-backups-and-recovery')" translate>
-            Learn more about Copay backups
-          </a>
+      <!-- hide this in multisig just to show less text -->
+      <div class="row m20t"  ng-show="index.n==1">
+        <div class="columns size-12 text-gray">
+          <div class="p10t"  style="border-top:1px solid #ccc">
+            <span translate>You can safely install your wallet on another device and use it from multiple devices at the same time.</span>
+            <a href="#" ng-click="$root.openExternalLink('https://github.com/bitpay/copay/blob/master/README.md#copay-backups-and-recovery')" translate>
+              Learn more about Copay backups
+            </a>
+          </div>
         </div>
       </div>
     </div>
